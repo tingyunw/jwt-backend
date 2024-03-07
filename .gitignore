@@ -1,0 +1,9 @@
+# packages
+package-lock.json
+node_modules/
+
+# output
+dist/
+
+# IDE
+.idea/
