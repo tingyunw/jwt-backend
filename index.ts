@@ -86,8 +86,8 @@ app.get('/login', {
 app.get('/logout',
     { onRequest: [app.authenticate] },
     (request, reply) => {
-    reply.clearCookie('access_token')
-    reply.send({ message: 'Logout successful' })
+    reply.clearCookie('access_token');
+    reply.send({ message: 'Logout successful' });
 })
 
 app.listen(4000, (err, address) => {
