@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import fjwt from '@fastify/jwt';
 import fCookie from '@fastify/cookie';
+import cors from '@fastify/cors';
 
 declare module 'fastify' {
     export interface FastifyInstance{
@@ -18,6 +19,15 @@ app.register(fCookie, {
     secret: 'some-secret-key',
     hook: 'onRequest',  // need match the value in endpoint
 })
+
+// Register the cors plugin
+app.register(cors, {
+    // Configurations options
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify which methods are allowed
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify which headers are allowed
+    credentials: true, // Whether to expose credentials (cookies, authorization headers, etc.)
+});
 
 app.decorate('authenticate', async function(request, reply) {
     try {
@@ -80,7 +90,7 @@ app.get('/logout',
     reply.send({ message: 'Logout successful' })
 })
 
-app.listen(3000, (err, address) => {
+app.listen(4000, (err, address) => {
     if (err) throw err;
     console.log(`Server is running at ${address}`);
 });
