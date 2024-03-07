@@ -23,7 +23,7 @@ app.register(fCookie, {
 // Register the cors plugin
 app.register(cors, {
     // Configurations options
-    origin: "*", // Allow all origins
+    origin: ['http://localhost:3000', 'http://localhost:4000'], // Allowed origins
     methods: ["GET", "POST", "PUT", "DELETE"], // Specify which methods are allowed
     allowedHeaders: ["Content-Type", "Authorization"], // Specify which headers are allowed
     credentials: true, // Whether to expose credentials (cookies, authorization headers, etc.)
